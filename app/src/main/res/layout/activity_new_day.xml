@@ -5,302 +5,300 @@
     android:layout_height="match_parent"
     tools:context="com.sofi.pacon.NewDayActivity">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scrollbarAlwaysDrawVerticalTrack="true">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp" >
 
-        <TextView
-            android:id="@+id/lblScoreEVA"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="24sp"
-            android:gravity="center"
-            android:layout_marginTop="20dip" />
-
-        <TextView
-            android:id="@+id/lbl0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:layout_marginTop="20dip"
-            android:layout_below="@+id/lblScoreEVA"/>
-
-        <SeekBar
-            android:id="@+id/evaBar"
-            style="@android:style/Widget.DeviceDefault.SeekBar"
-            android:layout_width="302dp"
-            android:layout_height="30dp"
-            android:max="10"
-            android:layout_marginTop="20dip"
-            android:layout_below="@+id/lblScoreEVA"
-            android:layout_toRightOf="@+id/lbl0"/>
-
-        <TextView
-            android:id="@+id/lbl10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10"
-            android:layout_marginTop="20dip"
-            android:layout_below="@+id/lblScoreEVA"
-            android:layout_toRightOf="@+id/evaBar"/>
-
-        <TextView
-            android:id="@+id/titleLocation"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Endroits"
-            android:textSize="14sp"
-            android:layout_marginTop="20dip"
-            android:layout_below="@+id/lbl0"
-            android:layout_alignParentLeft="true"/>
-
-        <RelativeLayout
-            android:id="@+id/checkBoxesLocation"
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/titleLocation"/>
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/titleMoment"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Moment"
-            android:textSize="14sp"
-            android:layout_marginTop="20dip"
-            android:layout_below="@+id/checkBoxesLocation"
-            />
+            <TextView
+                android:id="@+id/lblTitle_day"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Comment a été la douleur aujourd'hui?"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:layout_marginTop="20dip" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxesMoment"
-            android:layout_below="@+id/titleMoment">
+            <TextView
+                android:id="@+id/lblScoreEVA"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:layout_below="@+id/lblTitle_day"
+                android:layout_marginTop="20dip" />
 
-            <CheckBox
-                android:id="@+id/checkboxNight"
+            <TextView
+                android:id="@+id/lbl0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nuit"
-                android:layout_marginTop="0dp"
-                android:layout_marginLeft="0dp"/>
-            <CheckBox
-                android:id="@+id/checkboxMorning"
+                android:text="0"
+                android:layout_marginTop="20dip"
+                android:layout_below="@+id/lblScoreEVA"
+                android:layout_toLeftOf="@+id/evaBar"/>
+
+            <SeekBar
+                android:id="@+id/evaBar"
+                style="@android:style/Widget.DeviceDefault.SeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:max="10"
+                android:layout_marginTop="20dip"
+                android:layout_marginLeft="50dip"
+                android:layout_marginRight="50dip"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:minHeight="60dp"
+                android:maxHeight="60dp"
+                android:layout_below="@+id/lblScoreEVA" />
+
+            <TextView
+                android:id="@+id/lbl10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Matin"
-                android:layout_marginTop="0dp"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/checkboxNight"/>
-            <CheckBox
-                android:id="@+id/checkboxAm"
+                android:text="10"
+                android:layout_marginTop="20dip"
+                android:layout_below="@+id/lblScoreEVA"
+                android:layout_toRightOf="@+id/evaBar"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/infosDuree"
+                android:layout_below="@+id/evaBar">
+
+                <TextView
+                    android:id="@+id/titleDuration"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Durée: "
+                    android:textSize="16sp"
+                    android:layout_marginTop="15dp" />
+
+                <EditText
+                    android:id="@+id/editTextDuree"
+                    android:layout_width="50dip"
+                    android:layout_height="20dip"
+                    android:layout_marginTop="20dip"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/titleDuration" />
+
+                <TextView
+                    android:id="@+id/textHours"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Heures"
+                    android:textSize="14sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/editTextDuree" />
+
+                <CheckBox
+                    android:id="@+id/checkboxAllDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/textHours"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Tout le jour" />
+
+                <TextView
+                    android:id="@+id/typePain"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Type de douleur: "
+                    android:textSize="16sp"
+                    android:layout_marginTop="20dip"
+                    android:layout_below="@+id/editTextDuree" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/typePain">
+                    <RadioButton
+                        android:id="@+id/radioConstant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Constant"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_below="@+id/typePain"/>
+                    <RadioButton
+                        android:id="@+id/radioIntermittent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Intermittent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_below="@+id/radioConstant"/>
+                    <RadioButton
+                        android:id="@+id/radioPercee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Percée"
+                        android:layout_marginLeft="10dp"
+                        android:layout_below="@+id/radioIntermittent"/>
+
+                </RadioGroup>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/titleMoment"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Moment où la douleur a été le plus fort?"
+                android:textSize="16sp"
+                android:layout_marginTop="20dip"
+                android:layout_below="@+id/infosDuree"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBoxesMoment"
+                android:layout_below="@+id/titleMoment">
+
+                <CheckBox
+                    android:id="@+id/checkboxNight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nuit"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginLeft="0dp"/>
+                <CheckBox
+                    android:id="@+id/checkboxMorning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Matin"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/checkboxNight"/>
+                <CheckBox
+                    android:id="@+id/checkboxAm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Après-midi"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/checkboxMorning"/>
+                <CheckBox
+                    android:id="@+id/checkboxEvening"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Soirée"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/checkboxAm"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/titleLocation"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Endroits"
+                android:textSize="16sp"
+                android:layout_marginTop="20dip"
+                android:layout_below="@+id/checkBoxesMoment"
+                android:layout_alignParentLeft="true"/>
+
+            <RelativeLayout
+                android:id="@+id/checkBoxesLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleLocation"/>
+
+            <TextView
+                android:id="@+id/titleActivity"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Activité"
+                android:textSize="16sp"
+                android:layout_marginTop="20dip"
+                android:layout_below="@+id/checkBoxesLocation"
+                android:layout_alignParentLeft="true"/>
+
+            <RelativeLayout
+                android:id="@+id/checkBoxesActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleActivity"/>
+
+            <TextView
+                android:id="@+id/titleFeeling"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Après-midi"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/checkboxMorning"/>
-            <CheckBox
-                android:id="@+id/checkboxEvening"
+                android:text="Caractéristiques"
+                android:textSize="16sp"
+                android:layout_marginTop="20dip"
+                android:layout_below="@+id/checkBoxesActivity" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBoxesFeelings"
+                android:layout_below="@+id/titleFeeling" />
+
+            <TextView
+                android:id="@+id/titleContributeFactor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Soirée"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/checkboxAm"/>
+                android:text="Facteurs aggravants"
+                android:textSize="16sp"
+                android:layout_marginTop="20dip"
+                android:layout_below="@id/checkBoxesFeelings" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBoxesContributeFactor"
+                android:layout_below="@+id/titleContributeFactor" />
+
+            <TextView
+                android:id="@+id/titleRelieveEffect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Facteurs Soulagements"
+                android:textSize="16sp"
+                android:layout_marginTop="20dip"
+                android:layout_below="@id/checkBoxesContributeFactor" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBoxesRelieveEffect"
+                android:layout_below="@+id/titleRelieveEffect" />
+
+            <TextView
+                android:id="@+id/titleIneffectiveFactor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Facteurs Inefficaces"
+                android:textSize="16sp"
+                android:layout_marginTop="20dip"
+                android:layout_below="@+id/checkBoxesRelieveEffect" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBoxesIneffectiveFactor"
+                android:layout_below="@+id/titleIneffectiveFactor" />
+
+            <Button
+                android:id="@+id/btn_saveNewDay"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:layout_marginRight="80dip"
+                android:layout_marginLeft="80dip"
+                android:background="@color/colorAccent"
+                android:text="@string/btn_send"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/checkBoxesIneffectiveFactor" />
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/titleActivity"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Activité"
-            android:textSize="14sp"
-            android:layout_marginTop="20dip"
-            android:layout_below="@+id/checkBoxesMoment"
-            android:layout_alignParentLeft="true"/>
-
-        <RelativeLayout
-            android:id="@+id/checkBoxesActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/titleActivity"/>
-
-        <TextView
-            android:id="@+id/titleFeeling"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Caractéristiques"
-            android:textSize="14sp"
-            android:layout_marginTop="20dip"
-            android:layout_below="@+id/checkBoxesActivity" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxesFeelings"
-            android:layout_below="@+id/titleFeeling" />
-
-        <TextView
-            android:id="@+id/titleContributeFactor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Facteurs aggravants"
-            android:textSize="14sp"
-            android:layout_marginTop="20dip"
-            android:layout_below="@id/checkBoxesFeelings" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxesContributeFactor"
-            android:layout_below="@+id/titleContributeFactor" />
-
-        <TextView
-            android:id="@+id/titleRelieveEffect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Facteurs Soulagements"
-            android:textSize="14sp"
-            android:layout_marginTop="20dip"
-            android:layout_below="@id/checkBoxesContributeFactor" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxesRelieveEffect"
-            android:layout_below="@+id/titleRelieveEffect" />
-
-        <TextView
-            android:id="@+id/titleIneffectiveFactor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Facteurs Inefficaces"
-            android:textSize="14sp"
-            android:layout_marginTop="20dip"
-            android:layout_below="@+id/checkBoxesRelieveEffect" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxesIneffectiveFactor"
-            android:layout_below="@+id/titleIneffectiveFactor" />
-
-    </RelativeLayout>
-
-    <!--TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:stretchColumns="1"
-        android:background="@color/colorPrimary"
-        android:padding="@dimen/activity_horizontal_margin"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <TableRow>
-            <CheckBox android:id="@+id/checkbox_dos_basse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dos (basse)"
-                android:layout_marginTop="20dip" />
-            <CheckBox android:id="@+id/checkbox_cuisse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cuisse (droite)"
-                android:layout_marginTop="20dip" />
-        </TableRow>
-
-        <TableRow>
-            <CheckBox
-            <CheckBox android:id="@+id/checkbox_dos_droit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dos (droit)"
-                android:layout_marginTop="20dip" />
-            <CheckBox android:id="@+id/checkbox_hanche"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hanche (droite)"
-                android:layout_marginTop="20dip" />
-        </TableRow>
-
-        <TableRow>
-            <CheckBox android:id="@+id/checkbox_morning"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Matin"
-                android:layout_marginTop="20dip" />
-            <CheckBox android:id="@+id/checkbox_afternoon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Après-midi"
-                android:layout_marginTop="20dip" />
-        </TableRow>
-
-        <TableRow>
-            <CheckBox android:id="@+id/checkbox_evening"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Soirée"
-                android:layout_marginTop="20dip" />
-            <CheckBox android:id="@+id/checkbox_night"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nuit"
-                android:layout_marginTop="20dip" />
-        </TableRow>
-
-        <TableRow>
-            <CheckBox android:id="@+id/checkbox_brulure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Brûlure"
-                android:layout_marginTop="20dip" />
-            <CheckBox android:id="@+id/checkbox_decharge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Décharges Electriques"
-                android:layout_marginTop="20dip" />
-        </TableRow>
-
-        <TableRow>
-            <CheckBox android:id="@+id/checkbox_demangeaisons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Démangaisons"
-                android:layout_marginTop="20dip" />
-            <CheckBox android:id="@+id/checkbox_elancement"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Elancement"
-                android:layout_marginTop="20dip" />
-        </TableRow>
-
-        <TableRow>
-            <CheckBox android:id="@+id/checkbox_sitDown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Être assis"
-                android:layout_marginTop="20dip" />
-            <CheckBox android:id="@+id/checkbox_sitUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Être debout"
-                android:layout_marginTop="20dip" />
-        </TableRow>
-
-        <TableRow>
-            <CheckBox android:id="@+id/checkbox_sport"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sport"
-                android:layout_marginTop="20dip" />
-            <CheckBox android:id="@+id/checkbox_walk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Marche"
-                android:layout_marginTop="20dip" />
-        </TableRow>
-
-    </TableLayout-->
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

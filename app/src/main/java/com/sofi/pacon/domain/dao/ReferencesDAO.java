@@ -26,7 +26,7 @@ public class ReferencesDAO {
     private DatabaseReference fireDatabase;
     private Context context;
 
-    public ReferencesDAO(RelativeLayout.LayoutParams layoutParams, Context context) {
+    public ReferencesDAO(Context context) {
         fireDatabase = FirebaseDatabase.getInstance().getReference();
         this.context = context;
     }
@@ -70,23 +70,25 @@ public class ReferencesDAO {
                 if (dataSnapshot.exists()) {
                     Iterable<DataSnapshot> result = dataSnapshot.getChildren();
 
-                    int cpt = 0, up = 0, left = 0;
+                    int cpt = 0, up = 0;
 
                     for (DataSnapshot value : result) {
                         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
                                 RelativeLayout.LayoutParams.WRAP_CONTENT);
+                        layoutParams.setMargins(10, 10,50, 0);
                         String reference = value.getValue().toString();
                         CheckBox checkBox = new CheckBox(context);
                         checkBox.setText(reference);
                         int id = View.generateViewId();
                         checkBox.setId(id);
                         if (cpt > 0) {
-                            layoutParams.addRule(RelativeLayout.RIGHT_OF, left);
                             layoutParams.addRule(RelativeLayout.BELOW, up);
+                            if(cpt % 2 != 0) {
+                                layoutParams.setMargins(500, 10,10, 0);
+                            }
                         }
                         checkBox.setLayoutParams(layoutParams);
                         checkBoxesLayout.addView(checkBox);
-                        left = (cpt % 2 == 0) ? id : 0;
                         up = (cpt % 2 == 0) ? up : id;
                         cpt++;
                     }

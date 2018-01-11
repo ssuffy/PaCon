@@ -26,11 +26,7 @@ public class NewDayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        //layoutParams.setMargins(10, 10,0, 0);
-
-        referencesDAO = new ReferencesDAO(layoutParams, this);
+        referencesDAO = new ReferencesDAO(this);
 
         setContentView(R.layout.activity_new_day);
 
@@ -75,19 +71,19 @@ public class NewDayActivity extends AppCompatActivity {
         lblscoreEVA.setText(String.valueOf(progress));
 
         if (progress < 2) {
-            lblscoreEVA.setHighlightColor(Color.GREEN);
+            lblscoreEVA.setBackgroundColor(Color.GREEN);
         }
         if (progress >= 2 && progress < 4) {
-            lblscoreEVA.setHighlightColor(Color.rgb(214, 243, 65));
+            lblscoreEVA.setBackgroundColor(Color.rgb(214, 243, 65));
         }
         if (progress >= 4 && progress < 6) {
-            lblscoreEVA.setHighlightColor(Color.YELLOW);
+            lblscoreEVA.setBackgroundColor(Color.YELLOW);
         }
         if (progress >= 6 && progress < 8) {
-            lblscoreEVA.setHighlightColor(Color.rgb(255, 195, 0));
+            lblscoreEVA.setBackgroundColor(Color.rgb(255, 195, 0));
         }
         if (progress >= 8) {
-            lblscoreEVA.setHighlightColor(Color.RED);
+            lblscoreEVA.setBackgroundColor(Color.RED);
         }
     }
 
