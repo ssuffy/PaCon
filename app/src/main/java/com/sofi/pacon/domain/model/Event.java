@@ -1,4 +1,4 @@
-package com.sofi.pacon.domain.model
+package com.sofi.pacon.domain.model;
 
 import java.util.Date;
 
