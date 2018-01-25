@@ -3,35 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sofi.pacon.NewDayActivity">
+    tools:context="com.sofi.pacon.NewDayActivity" >
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="5dp" >
+        android:layout_height="match_parent" >
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary" >
 
             <TextView
                 android:id="@+id/lblTitle_day"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Comment a été la douleur aujourd'hui?"
-                android:textSize="24sp"
                 android:gravity="center"
-                android:layout_marginTop="20dip" />
+                android:layout_marginTop="20dip"
+                android:textAppearance="@style/CodeFontTitle"/>
 
             <TextView
                 android:id="@+id/lblScoreEVA"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="24sp"
                 android:gravity="center"
                 android:layout_below="@+id/lblTitle_day"
-                android:layout_marginTop="20dip" />
+                android:layout_marginTop="20dip"
+                android:textAppearance="@style/CodeFontSubtitle"/>
 
             <TextView
                 android:id="@+id/lbl0"
@@ -66,18 +66,54 @@
                 android:layout_below="@+id/lblScoreEVA"
                 android:layout_toRightOf="@+id/evaBar"/>
 
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/RadioGroupPainIntensity"
+                android:layout_below="@+id/evaBar"
+                android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/radioFaible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Faible" />
+                    <RadioButton
+                        android:id="@+id/radioMoyen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Moyen"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@+id/radioFaible" />
+                    <RadioButton
+                        android:id="@+id/radioMoyenFort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Moyen fort"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@+id/radioMoyen" />
+                    <RadioButton
+                        android:id="@+id/radioFort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fort"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@+id/radioMoyenFort" />
+
+            </RadioGroup>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/infosDuree"
-                android:layout_below="@+id/evaBar">
+                android:layout_below="@+id/RadioGroupPainIntensity">
 
                 <TextView
                     android:id="@+id/titleDuration"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Durée: "
-                    android:textSize="16sp"
+                    android:textAppearance="@style/CodeFontSubtitle"
                     android:layout_marginTop="15dp" />
 
                 <EditText
@@ -111,13 +147,14 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Type de douleur: "
-                    android:textSize="16sp"
+                    android:textAppearance="@style/CodeFontSubtitle"
                     android:layout_marginTop="20dip"
                     android:layout_below="@+id/editTextDuree" />
 
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/RadioGroupPainType"
                     android:layout_below="@+id/typePain">
                     <RadioButton
                         android:id="@+id/radioConstant"
@@ -150,7 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Moment où la douleur a été le plus fort?"
-                android:textSize="16sp"
+                android:textAppearance="@style/CodeFontSubtitle"
                 android:layout_marginTop="20dip"
                 android:layout_below="@+id/infosDuree"
                 />
@@ -198,7 +235,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Endroits"
-                android:textSize="16sp"
+                android:textAppearance="@style/CodeFontSubtitle"
                 android:layout_marginTop="20dip"
                 android:layout_below="@+id/checkBoxesMoment"
                 android:layout_alignParentLeft="true"/>
@@ -210,13 +247,29 @@
                 android:layout_below="@+id/titleLocation"/>
 
             <TextView
+                android:id="@+id/titleEnvironment"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Environement"
+                android:textAppearance="@style/CodeFontSubtitle"
+                android:layout_marginTop="20dip"
+                android:layout_below="@+id/checkBoxesLocation"
+                android:layout_alignParentLeft="true"/>
+
+            <RelativeLayout
+                android:id="@+id/checkBoxesEnvironment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleEnvironment"/>
+
+            <TextView
                 android:id="@+id/titleActivity"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Activité"
-                android:textSize="16sp"
+                android:textAppearance="@style/CodeFontSubtitle"
                 android:layout_marginTop="20dip"
-                android:layout_below="@+id/checkBoxesLocation"
+                android:layout_below="@+id/checkBoxesEnvironment"
                 android:layout_alignParentLeft="true"/>
 
             <RelativeLayout
@@ -230,7 +283,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Caractéristiques"
-                android:textSize="16sp"
+                android:textAppearance="@style/CodeFontSubtitle"
                 android:layout_marginTop="20dip"
                 android:layout_below="@+id/checkBoxesActivity" />
 
@@ -245,7 +298,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Facteurs aggravants"
-                android:textSize="16sp"
+                android:textAppearance="@style/CodeFontSubtitle"
                 android:layout_marginTop="20dip"
                 android:layout_below="@id/checkBoxesFeelings" />
 
@@ -260,7 +313,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Facteurs Soulagements"
-                android:textSize="16sp"
+                android:textAppearance="@style/CodeFontSubtitle"
                 android:layout_marginTop="20dip"
                 android:layout_below="@id/checkBoxesContributeFactor" />
 
@@ -275,7 +328,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Facteurs Inefficaces"
-                android:textSize="16sp"
+                android:textAppearance="@style/CodeFontSubtitle"
                 android:layout_marginTop="20dip"
                 android:layout_below="@+id/checkBoxesRelieveEffect" />
 

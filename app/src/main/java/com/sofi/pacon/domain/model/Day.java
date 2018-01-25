@@ -6,13 +6,16 @@ import java.util.List;
 public class Day {
 	private Date date;
 	private int score;
+	private int duree;
+	private String type;
+	private List<String> moments;
 	private String intensity;
 	private String painDiffusion;
 	private int interruption;
 	private List<String> feltPain;
 	private List<String> PainLocation;
 	private List<String> activity;
-	private String environment;
+	private List<String> environment;
 	private List<String> contributeFactor;
 	private List<String> relieveEffect;
 	private List<String> ineffectiveFactor;
@@ -31,6 +34,31 @@ public class Day {
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+
+
+	public int getDuree() {
+		return duree;
+	}
+
+	public void setDuree(int duree) {
+		this.duree = duree;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public List<String> getMoments() {
+		return moments;
+	}
+
+	public void setMoments(List<String> moments) {
+		this.moments = moments;
 	}
 
 	public String getIntensity() {
@@ -81,11 +109,11 @@ public class Day {
 		this.activity = activity;
 	}
 
-	public String getEnvironment() {
+	public List<String> getEnvironment() {
 		return environment;
 	}
 
-	public void setEnvironment(String environment) {
+	public void setEnvironment(List<String> environment) {
 		this.environment = environment;
 	}
 

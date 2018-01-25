@@ -12,9 +12,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static android.content.ContentValues.TAG;
 
 /**
@@ -31,34 +28,36 @@ public class ReferencesDAO {
         this.context = context;
     }
 
-    public List<String> getLocations(RelativeLayout relativeLayout) {
-        return getListReferences("Location", relativeLayout);
+    public RelativeLayout getLocations(RelativeLayout relativeLayout, View.OnClickListener listenerOnClick) {
+        return getListReferences("Location", relativeLayout, listenerOnClick);
     }
 
-    public List<String> getActivities(RelativeLayout relativeLayout) {
-        return getListReferences("Activity", relativeLayout);
+    public RelativeLayout getEnvironments(RelativeLayout relativeLayout, View.OnClickListener listenerOnClick) {
+        return getListReferences("Environment", relativeLayout, listenerOnClick);
     }
 
-    public List<String> getFeelings(RelativeLayout relativeLayout) {
-        return getListReferences("Felt", relativeLayout);
+    public RelativeLayout getActivities(RelativeLayout relativeLayout, View.OnClickListener listenerOnClick) {
+        return getListReferences("Activity", relativeLayout, listenerOnClick);
     }
 
-    public List<String> getContributeFactors(RelativeLayout relativeLayout) {
-        return getListReferences("ContributeFactor", relativeLayout);
+    public RelativeLayout getFeelings(RelativeLayout relativeLayout, View.OnClickListener listenerOnClick) {
+        return getListReferences("Felt", relativeLayout, listenerOnClick);
     }
 
-    public List<String> getRelieveEffects(RelativeLayout relativeLayout) {
-        return getListReferences("Effects", relativeLayout);
+    public RelativeLayout getContributeFactors(RelativeLayout relativeLayout, View.OnClickListener listenerOnClick) {
+        return getListReferences("ContributeFactor", relativeLayout, listenerOnClick);
     }
 
-    public List<String> getIneffectiveEffect(RelativeLayout relativeLayout) {
-        return getListReferences("Effects", relativeLayout);
+    public RelativeLayout getRelieveEffects(RelativeLayout relativeLayout, View.OnClickListener listenerOnClick) {
+        return getListReferences("Effects", relativeLayout, listenerOnClick);
     }
 
-    public List<String> getListReferences(String type, final RelativeLayout checkBoxesLayout) {
+    public RelativeLayout getIneffectiveEffect(RelativeLayout relativeLayout, View.OnClickListener listenerOnClick) {
+        return getListReferences("Effects", relativeLayout, listenerOnClick);
+    }
+
+    public RelativeLayout getListReferences(String type, final RelativeLayout checkBoxesLayout, final View.OnClickListener listenerOnClick) {
         DatabaseReference databaseReference = fireDatabase.child(type);
-
-        final List<String> listResult = new ArrayList<>();
 
         databaseReference.keepSynced(true);
 
@@ -88,6 +87,7 @@ public class ReferencesDAO {
                             }
                         }
                         checkBox.setLayoutParams(layoutParams);
+                        checkBox.setOnClickListener(listenerOnClick);
                         checkBoxesLayout.addView(checkBox);
                         up = (cpt % 2 == 0) ? up : id;
                         cpt++;
@@ -102,7 +102,6 @@ public class ReferencesDAO {
                 Log.d(TAG, "onCancelled");
             }
         });
-
-        return listResult;
+        return checkBoxesLayout;
     }
 }
