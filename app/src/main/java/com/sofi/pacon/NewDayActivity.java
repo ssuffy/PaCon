@@ -1,5 +1,6 @@
 package com.sofi.pacon;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +22,6 @@ import com.sofi.pacon.domain.model.Day;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -103,6 +103,7 @@ public class NewDayActivity extends AppCompatActivity {
 
         rg_typePain = findViewById(R.id.RadioGroupPainType);
         rg_painIntensity = findViewById(R.id.RadioGroupPainIntensity);
+        rg_painIntensity.check(R.id.radioFaible);
 
         save = findViewById(R.id.btn_saveNewDay);
 
@@ -114,9 +115,7 @@ public class NewDayActivity extends AppCompatActivity {
                         lstFeelings = new ArrayList<>(), lstContributeFactors = new ArrayList<>(),
                         lstRelieveFactors = new ArrayList<>();
 
-
-                Date date = new Date();
-                nouvelleJournee.setDate(date);
+                nouvelleJournee.setDate(editDate.getTime());
                 nouvelleJournee.setScore(Integer.parseInt(lblscoreEVA.getText().toString()));
                 nouvelleJournee.setIntensity(((RadioButton) rg_painIntensity.findViewById(rg_painIntensity.getCheckedRadioButtonId())).getText().toString());
                 lstLocations.addAll(locations);
@@ -135,10 +134,13 @@ public class NewDayActivity extends AppCompatActivity {
                 nouvelleJournee.setMoments(getMoments());
                 // nouvelleJournee.setPainDiffusion();
                 nouvelleJournee.setRelieveEffect(lstRelieveFactors);
-                if ((RadioButton) rg_typePain.findViewById(rg_typePain.getCheckedRadioButtonId()) != null)
+                if (rg_typePain.findViewById(rg_typePain.getCheckedRadioButtonId()) != null) {
                     nouvelleJournee.setType(((RadioButton) rg_typePain.findViewById(rg_typePain.getCheckedRadioButtonId())).getText().toString());
-                dayDAO.writeNewDay(formatDate.format(date), nouvelleJournee);
+                }
 
+                dayDAO.writeNewDay(formatDate.format(editDate.getTime()), nouvelleJournee);
+                setResult(Activity.RESULT_OK);
+                finish();
             }
         });
 
@@ -186,15 +188,11 @@ public class NewDayActivity extends AppCompatActivity {
 
     private List<String> getMoments() {
         List<String> result = new ArrayList<>();
-        CheckBox cb_allDay = findViewById(R.id.checkboxAllDay),
-                cb_night = findViewById(R.id.checkboxNight),
+        CheckBox cb_night = findViewById(R.id.checkboxNight),
                 cb_am = findViewById(R.id.checkboxMorning),
                 cb_pm = findViewById(R.id.checkboxAm),
                 cb_evening = findViewById(R.id.checkboxEvening);
 
-        if (cb_allDay.isChecked()) {
-            result.add("Tout le jour");
-        }
         if (cb_night.isChecked()) {
             result.add("Nuit");
         }
@@ -235,5 +233,9 @@ public class NewDayActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         lblTitle_day.setText("le : " + sdf.format(editDate.getTime()) + "?");
+    }
+
+    public void cancel(View v) {
+        finish();
     }
 }

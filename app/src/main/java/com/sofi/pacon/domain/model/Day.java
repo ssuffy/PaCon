@@ -140,4 +140,8 @@ public class Day {
 	public void setIneffectiveFactor(List<String> ineffectiveFactor) {
 		this.ineffectiveFactor = ineffectiveFactor;
 	}
+
+    public boolean isValid() {
+        return true;
+    }
 }

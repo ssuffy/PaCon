@@ -35,7 +35,8 @@
     <string name="btn_back"><![CDATA[<< Back]]></string>
     <string name="hint_new_email">New Email</string>
     <string name="btn_change">Change</string>
-    <string name="btn_send">Send</string>
+    <string name="btn_send">Sauvegarder</string>
+    <string name="btn_cancel">Annuler</string>
     <string name="btn_remove">Remove</string>
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
@@ -49,6 +50,6 @@
 
 
     <!-- new_activity -->
-    <string name="lbl_title">Comment a été la douleur</string>
+    <string name="lbl_title">Comment va la douleur</string>
     <string name="lbl_today">"<u>aujourd'hui</u> ?"</string>
 </resources>
