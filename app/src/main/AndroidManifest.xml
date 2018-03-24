@@ -16,7 +16,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="Ecran principal">
+            android:label="Ecran principal"
+            android:theme="@style/paconTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,7 +47,7 @@
         <activity
             android:name=".NewDayActivity"
             android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/paconTheme"></activity>
     </application>
 
 </manifest>

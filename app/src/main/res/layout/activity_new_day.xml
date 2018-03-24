@@ -3,352 +3,342 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sofi.pacon.NewDayActivity" >
+    tools:context="com.sofi.pacon.NewDayActivity">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary" >
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/lblTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:gravity="center"
+                android:text="@string/lbl_title"
+                android:textAppearance="@style/CodeFontTitle" />
 
             <TextView
                 android:id="@+id/lblTitle_day"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Comment a été la douleur aujourd'hui?"
                 android:gravity="center"
-                android:layout_marginTop="20dip"
-                android:textAppearance="@style/CodeFontTitle"/>
+                android:text="@string/lbl_today"
+                android:onClick="openDatePicker"
+                android:clickable="true"
+                android:textAppearance="@style/CodeFontTitle"
+                android:focusable="false"
+                android:layout_below="@id/lblTitle"/>
 
             <TextView
                 android:id="@+id/lblScoreEVA"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:gravity="center"
+                android:layout_width="50dip"
+                android:layout_height="50dip"
                 android:layout_below="@+id/lblTitle_day"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dip"
-                android:textAppearance="@style/CodeFontSubtitle"/>
-
-            <TextView
-                android:id="@+id/lbl0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:background="@drawable/circle_green_one"
+                android:gravity="center"
                 android:text="0"
-                android:layout_marginTop="20dip"
-                android:layout_below="@+id/lblScoreEVA"
-                android:layout_toLeftOf="@+id/evaBar"/>
+                android:textAppearance="@style/CodeFontSubtitle"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
             <SeekBar
                 android:id="@+id/evaBar"
                 style="@android:style/Widget.DeviceDefault.SeekBar"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:max="10"
-                android:layout_marginTop="20dip"
+                android:layout_below="@+id/lblScoreEVA"
+                android:layout_gravity="center"
                 android:layout_marginLeft="50dip"
                 android:layout_marginRight="50dip"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:minHeight="60dp"
-                android:maxHeight="60dp"
-                android:layout_below="@+id/lblScoreEVA" />
-
-            <TextView
-                android:id="@+id/lbl10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10"
                 android:layout_marginTop="20dip"
-                android:layout_below="@+id/lblScoreEVA"
-                android:layout_toRightOf="@+id/evaBar"/>
+                android:gravity="center"
+                android:max="10"
+                android:maxHeight="60dp"
+                android:minHeight="60dp" />
 
             <RadioGroup
+                android:id="@+id/RadioGroupPainIntensity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/RadioGroupPainIntensity"
                 android:layout_below="@+id/evaBar"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/radioFaible"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Faible" />
-                    <RadioButton
-                        android:id="@+id/radioMoyen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Moyen"
-                        android:layout_marginLeft="15dp"
-                        android:layout_toRightOf="@+id/radioFaible" />
-                    <RadioButton
-                        android:id="@+id/radioMoyenFort"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Moyen fort"
-                        android:layout_marginLeft="15dp"
-                        android:layout_toRightOf="@+id/radioMoyen" />
-                    <RadioButton
-                        android:id="@+id/radioFort"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fort"
-                        android:layout_marginLeft="15dp"
-                        android:layout_toRightOf="@+id/radioMoyenFort" />
+                <RadioButton
+                    android:id="@+id/radioFaible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Faible" />
+
+                <RadioButton
+                    android:id="@+id/radioMoyen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/radioFaible"
+                    android:text="Moyen" />
+
+                <RadioButton
+                    android:id="@+id/radioMoyenFort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/radioMoyen"
+                    android:text="Moyen fort" />
+
+                <RadioButton
+                    android:id="@+id/radioFort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/radioMoyenFort"
+                    android:text="Fort" />
 
             </RadioGroup>
 
             <RelativeLayout
+                android:id="@+id/infosDuree"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/infosDuree"
                 android:layout_below="@+id/RadioGroupPainIntensity">
 
                 <TextView
                     android:id="@+id/titleDuration"
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:text="Durée: "
-                    android:textAppearance="@style/CodeFontSubtitle"
-                    android:layout_marginTop="15dp" />
+                    android:textAppearance="@style/CodeFontSubtitle" />
 
                 <EditText
                     android:id="@+id/editTextDuree"
                     android:layout_width="50dip"
                     android:layout_height="20dip"
-                    android:layout_marginTop="20dip"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dip"
                     android:layout_toRightOf="@+id/titleDuration" />
 
                 <TextView
                     android:id="@+id/textHours"
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Heures"
-                    android:textSize="14sp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:layout_toRightOf="@+id/editTextDuree" />
+                    android:layout_toRightOf="@+id/editTextDuree"
+                    android:text="Heures"
+                    android:textSize="14sp" />
 
                 <CheckBox
                     android:id="@+id/checkboxAllDay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/textHours"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/textHours"
                     android:text="Tout le jour" />
 
                 <TextView
                     android:id="@+id/typePain"
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Type de douleur: "
-                    android:textAppearance="@style/CodeFontSubtitle"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editTextDuree"
                     android:layout_marginTop="20dip"
-                    android:layout_below="@+id/editTextDuree" />
+                    android:text="Type de douleur: "
+                    android:textAppearance="@style/CodeFontSubtitle" />
 
                 <RadioGroup
+                    android:id="@+id/RadioGroupPainType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/RadioGroupPainType"
                     android:layout_below="@+id/typePain">
+
                     <RadioButton
                         android:id="@+id/radioConstant"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Constant"
-                        android:layout_marginTop="0dp"
+                        android:layout_below="@+id/typePain"
                         android:layout_marginLeft="10dp"
-                        android:layout_below="@+id/typePain"/>
+                        android:layout_marginTop="0dp"
+                        android:text="Constant" />
+
                     <RadioButton
                         android:id="@+id/radioIntermittent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Intermittent"
+                        android:layout_below="@+id/radioConstant"
                         android:layout_marginLeft="10dp"
-                        android:layout_below="@+id/radioConstant"/>
+                        android:text="Intermittent" />
+
                     <RadioButton
                         android:id="@+id/radioPercee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Percée"
+                        android:layout_below="@+id/radioIntermittent"
                         android:layout_marginLeft="10dp"
-                        android:layout_below="@+id/radioIntermittent"/>
+                        android:text="Percée" />
 
                 </RadioGroup>
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/titleMoment"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Moment où la douleur a été le plus fort?"
-                android:textAppearance="@style/CodeFontSubtitle"
-                android:layout_marginTop="20dip"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/infosDuree"
-                />
+                android:layout_marginTop="20dip"
+                android:text="Quand la douleur a t'elle été le plus désagréable?"
+                android:textAppearance="@style/CodeFontSubtitle" />
 
             <RelativeLayout
+                android:id="@+id/checkBoxesMoment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBoxesMoment"
                 android:layout_below="@+id/titleMoment">
 
                 <CheckBox
                     android:id="@+id/checkboxNight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nuit"
+                    android:layout_marginLeft="0dp"
                     android:layout_marginTop="0dp"
-                    android:layout_marginLeft="0dp"/>
+                    android:text="Nuit" />
+
                 <CheckBox
                     android:id="@+id/checkboxMorning"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Matin"
-                    android:layout_marginTop="0dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/checkboxNight"/>
+                    android:layout_marginTop="0dp"
+                    android:layout_toRightOf="@+id/checkboxNight"
+                    android:text="Matin" />
+
                 <CheckBox
                     android:id="@+id/checkboxAm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Après-midi"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/checkboxMorning"/>
+                    android:layout_toRightOf="@+id/checkboxMorning"
+                    android:text="Après-midi" />
+
                 <CheckBox
                     android:id="@+id/checkboxEvening"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Soirée"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/checkboxAm"/>
+                    android:layout_toRightOf="@+id/checkboxAm"
+                    android:text="Soirée" />
 
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/titleLocation"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Endroits"
-                android:textAppearance="@style/CodeFontSubtitle"
-                android:layout_marginTop="20dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_below="@+id/checkBoxesMoment"
-                android:layout_alignParentLeft="true"/>
+                android:layout_marginTop="20dip"
+                android:text="Endroits"
+                android:textAppearance="@style/CodeFontSubtitle" />
 
             <RelativeLayout
                 android:id="@+id/checkBoxesLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/titleLocation"/>
+                android:layout_below="@+id/titleLocation" />
 
             <TextView
                 android:id="@+id/titleEnvironment"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Environement"
-                android:textAppearance="@style/CodeFontSubtitle"
-                android:layout_marginTop="20dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_below="@+id/checkBoxesLocation"
-                android:layout_alignParentLeft="true"/>
+                android:layout_marginTop="20dip"
+                android:text="Environement"
+                android:textAppearance="@style/CodeFontSubtitle" />
 
             <RelativeLayout
                 android:id="@+id/checkBoxesEnvironment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/titleEnvironment"/>
+                android:layout_below="@+id/titleEnvironment" />
 
             <TextView
                 android:id="@+id/titleActivity"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Activité"
-                android:textAppearance="@style/CodeFontSubtitle"
-                android:layout_marginTop="20dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_below="@+id/checkBoxesEnvironment"
-                android:layout_alignParentLeft="true"/>
+                android:layout_marginTop="20dip"
+                android:text="Activité"
+                android:textAppearance="@style/CodeFontSubtitle" />
 
             <RelativeLayout
                 android:id="@+id/checkBoxesActivity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/titleActivity"/>
+                android:layout_below="@+id/titleActivity" />
 
             <TextView
                 android:id="@+id/titleFeeling"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Caractéristiques"
-                android:textAppearance="@style/CodeFontSubtitle"
+                android:layout_below="@+id/checkBoxesActivity"
                 android:layout_marginTop="20dip"
-                android:layout_below="@+id/checkBoxesActivity" />
+                android:text="Caractéristiques"
+                android:textAppearance="@style/CodeFontSubtitle" />
 
             <RelativeLayout
+                android:id="@+id/checkBoxesFeelings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBoxesFeelings"
                 android:layout_below="@+id/titleFeeling" />
 
             <TextView
                 android:id="@+id/titleContributeFactor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Facteurs aggravants"
-                android:textAppearance="@style/CodeFontSubtitle"
+                android:layout_below="@id/checkBoxesFeelings"
                 android:layout_marginTop="20dip"
-                android:layout_below="@id/checkBoxesFeelings" />
+                android:text="Facteurs aggravants"
+                android:textAppearance="@style/CodeFontSubtitle" />
 
             <RelativeLayout
+                android:id="@+id/checkBoxesContributeFactor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBoxesContributeFactor"
                 android:layout_below="@+id/titleContributeFactor" />
 
             <TextView
                 android:id="@+id/titleRelieveEffect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/checkBoxesContributeFactor"
+                android:layout_marginTop="20dip"
                 android:text="Facteurs Soulagements"
-                android:textAppearance="@style/CodeFontSubtitle"
-                android:layout_marginTop="20dip"
-                android:layout_below="@id/checkBoxesContributeFactor" />
+                android:textAppearance="@style/CodeFontSubtitle" />
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/checkBoxesRelieveEffect"
-                android:layout_below="@+id/titleRelieveEffect" />
-
-            <TextView
-                android:id="@+id/titleIneffectiveFactor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Facteurs Inefficaces"
-                android:textAppearance="@style/CodeFontSubtitle"
-                android:layout_marginTop="20dip"
-                android:layout_below="@+id/checkBoxesRelieveEffect" />
-
-            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/checkBoxesIneffectiveFactor"
-                android:layout_below="@+id/titleIneffectiveFactor" />
+                android:layout_below="@+id/titleRelieveEffect" />
 
             <Button
                 android:id="@+id/btn_saveNewDay"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dip"
-                android:layout_marginRight="80dip"
+                android:layout_below="@+id/checkBoxesRelieveEffect"
                 android:layout_marginLeft="80dip"
+                android:layout_marginRight="80dip"
+                android:layout_marginTop="20dip"
                 android:background="@color/colorAccent"
                 android:text="@string/btn_send"
-                android:textColor="@android:color/black"
-                android:layout_below="@+id/checkBoxesIneffectiveFactor" />
+                android:textColor="@android:color/black" />
 
         </RelativeLayout>
 

@@ -51,11 +51,7 @@ public class ReferencesDAO {
     public RelativeLayout getRelieveEffects(RelativeLayout relativeLayout, View.OnClickListener listenerOnClick) {
         return getListReferences("Effects", relativeLayout, listenerOnClick);
     }
-
-    public RelativeLayout getIneffectiveEffect(RelativeLayout relativeLayout, View.OnClickListener listenerOnClick) {
-        return getListReferences("Effects", relativeLayout, listenerOnClick);
-    }
-
+    
     public RelativeLayout getListReferences(String type, final RelativeLayout checkBoxesLayout, final View.OnClickListener listenerOnClick) {
         DatabaseReference databaseReference = fireDatabase.child(type);
 
