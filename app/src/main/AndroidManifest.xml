@@ -48,6 +48,19 @@
             android:name=".NewDayActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/paconTheme"></activity>
+
+        <receiver android:name=".listener.AlarmReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".listener.DeviceBootReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
