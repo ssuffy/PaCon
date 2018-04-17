@@ -1,7 +1,5 @@
 package com.sofi.pacon.domain.dao;
 
-import android.content.Context;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.sofi.pacon.domain.model.Day;

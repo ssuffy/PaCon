@@ -1,14 +1,23 @@
 package com.sofi.pacon;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.sofi.pacon.listener.AlarmReceiver;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnNewDay, btnNewEvent, btnNewDrug, btnSettings, signOut;
@@ -75,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        configAlarm(this);
+
     }
 
     //sign out method
@@ -114,5 +125,24 @@ public class MainActivity extends AppCompatActivity {
     public void openSettingsActivity() {
         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
+    }
+
+    public void configAlarm(Context context) {
+        AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        /* Set the alarm to start at 19:30 PM */
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 19);
+        calendar.set(Calendar.MINUTE, 30);
+
+        Log.d("MainActivity", "Recurring alarm; requesting download service.");
+
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        intent.putExtra("Notification", "mDoNotify");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+
     }
 }
