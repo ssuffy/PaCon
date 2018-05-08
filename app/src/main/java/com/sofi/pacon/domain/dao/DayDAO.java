@@ -1,6 +1,5 @@
 package com.sofi.pacon.domain.dao;
 
-
 import android.util.Log;
 
 import com.google.firebase.database.DatabaseError;
