@@ -74,7 +74,7 @@
                     android:id="@+id/radioFaible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Faible" />
+                    android:text="@string/faible" />
 
                 <RadioButton
                     android:id="@+id/radioMoyen"
@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_toRightOf="@+id/radioFaible"
-                    android:text="Moyen" />
+                    android:text="@string/moyen" />
 
                 <RadioButton
                     android:id="@+id/radioMoyenFort"
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_toRightOf="@+id/radioMoyen"
-                    android:text="Moyen fort" />
+                    android:text="@string/mFort" />
 
                 <RadioButton
                     android:id="@+id/radioFort"
@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_toRightOf="@+id/radioMoyenFort"
-                    android:text="Fort" />
+                    android:text="@string/fort" />
 
             </RadioGroup>
 
@@ -164,7 +164,7 @@
                         android:layout_below="@+id/typePain"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="0dp"
-                        android:text="Constant" />
+                        android:text="@string/constant" />
 
                     <RadioButton
                         android:id="@+id/radioIntermittent"
@@ -172,7 +172,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/radioConstant"
                         android:layout_marginLeft="10dp"
-                        android:text="Intermittent" />
+                        android:text="@string/intermittent" />
 
                     <RadioButton
                         android:id="@+id/radioPercee"
@@ -180,7 +180,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/radioIntermittent"
                         android:layout_marginLeft="10dp"
-                        android:text="Percée" />
+                        android:text="@string/perce" />
 
                 </RadioGroup>
             </RelativeLayout>
@@ -258,7 +258,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/checkBoxesLocation"
                 android:layout_marginTop="20dip"
-                android:text="Environement"
+                android:text="Environnement"
                 android:textAppearance="@style/CodeFontSubtitle" />
 
             <RelativeLayout
@@ -319,6 +319,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/checkBoxesContributeFactor"
                 android:layout_marginTop="20dip"
+                android:layout_marginBottom="20dip"
                 android:text="Facteurs Soulagements"
                 android:textAppearance="@style/CodeFontSubtitle" />
 
@@ -328,32 +329,32 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/titleRelieveEffect" />
 
-            <Button
-                android:id="@+id/btn_saveNewDay"
-                android:layout_width="120dip"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/checkBoxesRelieveEffect"
-                android:layout_marginLeft="20dip"
-                android:layout_marginRight="20dip"
                 android:layout_marginTop="20dip"
-                android:background="@color/colorAccent"
-                android:text="@string/btn_send"
-                android:textColor="@android:color/black" />
+                android:layout_centerInParent="true" >
 
-            <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="120dip"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkBoxesRelieveEffect"
-                android:layout_toRightOf="@+id/btn_saveNewDay"
-                android:layout_marginLeft="20dip"
-                android:layout_marginRight="20dip"
-                android:layout_marginTop="20dip"
-                android:text="@string/btn_cancel"
-                android:onClick="cancel"
-                android:background="@color/colorAccent"
-                android:textColor="@android:color/black" />
+                <Button
+                    android:id="@+id/btn_saveNewDay"
+                    android:layout_width="120dip"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:text="@string/btn_send"
+                    android:textColor="@android:color/black" />
 
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="120dip"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/btn_saveNewDay"
+                    android:layout_marginLeft="40dip"
+                    android:text="@string/btn_cancel"
+                    android:onClick="cancel"
+                    android:background="@color/colorAccent"
+                    android:textColor="@android:color/black" />
+            </RelativeLayout>
         </RelativeLayout>
 
     </ScrollView>

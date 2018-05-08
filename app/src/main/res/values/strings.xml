@@ -52,4 +52,14 @@
     <!-- new_activity -->
     <string name="lbl_title">Comment va la douleur</string>
     <string name="lbl_today">"<u>aujourd'hui</u> ?"</string>
+
+
+    <string name="faible">Faible</string>
+    <string name="moyen">Moyen</string>
+    <string name="mFort">Moyen fort</string>
+    <string name="fort">Fort</string>
+
+    <string name="constant">Constant</string>
+    <string name="intermittent">Intermittent</string>
+    <string name="perce">Percée</string>
 </resources>
