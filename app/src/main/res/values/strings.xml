@@ -2,6 +2,9 @@
     <string name="app_name">PaCon</string>
     <string name="title_activity_login">Sign in</string>
 
+    <!-- String for notification -->
+    <string name="default_notification_channel_id">PaconNotification</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -50,7 +53,7 @@
 
 
     <!-- new_activity -->
-    <string name="lbl_title">Comment va la douleur</string>
+    <string name="lbl_title_day">Comment va la douleur</string>
     <string name="lbl_today">"<u>aujourd'hui</u> ?"</string>
 
 
@@ -62,4 +65,10 @@
     <string name="constant">Constant</string>
     <string name="intermittent">Intermittent</string>
     <string name="perce">Percée</string>
+
+    <!-- new taking drug -->
+    <string name="title_activity_taking_drug">TakingDrugActivity</string>
+    <string name="lbl_title_drug">Quand?</string>
+    <string name="lbl_now"><u>maintenant</u></string>
+
 </resources>

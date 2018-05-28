@@ -34,7 +34,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-public class NewDayActivity extends AppCompatActivity {
+public class NewDayActivity extends NewDataActivity {
 
     private static final String TAG = "NewDayActivity";
 
@@ -58,8 +58,6 @@ public class NewDayActivity extends AppCompatActivity {
     private Set<String> activities = new HashSet<>(), locations = new HashSet<>(), environments = new HashSet<>(),
             feelings = new HashSet<>(), contributeFactors = new HashSet<>(),
             relieveFactors = new HashSet<>();
-
-    Calendar editDate = Calendar.getInstance();
 
     final DayDAO dayDAO = new DayDAO();
 
@@ -155,20 +153,6 @@ public class NewDayActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private View.OnClickListener createOnCheckBoxClickListener(final Set<String> values) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CheckBox ckb = (CheckBox) v;
-                if (ckb.isChecked()) {
-                    values.add(ckb.getText().toString());
-                } else {
-                    values.remove(ckb.getText().toString());
-                }
-            }
-        };
     }
 
     private void changeLblEVA(int progress) {

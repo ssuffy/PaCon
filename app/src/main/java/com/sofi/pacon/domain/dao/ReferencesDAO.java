@@ -100,4 +100,8 @@ public class ReferencesDAO {
         });
         return checkBoxesLayout;
     }
+
+    public RelativeLayout getDrugs(RelativeLayout relativeLayout, View.OnClickListener listenerOnClick) {
+        return getListReferences("Drug", relativeLayout, listenerOnClick);
+    }
 }

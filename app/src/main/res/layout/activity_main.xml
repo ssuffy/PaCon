@@ -24,6 +24,7 @@
             android:layout_marginTop="20dip"
             android:background="@color/colorAccent"
             android:text="@string/btn_new_day"
+            android:onClick="openNewDayActivity"
             android:textColor="@android:color/white" />
 
         <Button
@@ -34,7 +35,7 @@
             android:layout_marginTop="20dip"
             android:background="@color/colorAccent"
             android:text="@string/btn_new_event"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/new_drug_button"
@@ -44,6 +45,7 @@
             android:layout_marginTop="20dip"
             android:background="@color/colorAccent"
             android:text="@string/btn_new_drug"
+            android:onClick="openNewTakingDrugActivity"
             android:textColor="@android:color/white" />
 
         <Button

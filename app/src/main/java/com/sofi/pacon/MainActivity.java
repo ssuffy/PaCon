@@ -55,14 +55,6 @@ public class MainActivity extends AppCompatActivity {
         btnSettings = findViewById(R.id.settings_button);
         signOut = findViewById(R.id.sign_out);
 
-
-        btnNewDay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNewDayActivity();
-            }
-        });
-
         btnNewEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,8 +104,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void openNewDayActivity() {
+    public void openNewDayActivity(View view) {
         Intent intent = new Intent(MainActivity.this, NewDayActivity.class);
+        startActivity(intent);
+    }
+
+    public void openNewTakingDrugActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, NewTakingDrugActivity.class);
         startActivity(intent);
     }
 

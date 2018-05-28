@@ -48,12 +48,20 @@
             android:name=".NewDayActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/paconTheme"></activity>
+        <activity
+            android:name=".NewTakingDrugActivity"
+            android:label="@string/title_activity_taking_drug"
+            android:theme="@style/paconTheme"></activity>
 
         <receiver android:name=".listener.AlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
 
         <receiver android:name=".listener.DeviceBootReceiver"
             android:enabled="false">

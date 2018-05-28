@@ -2,22 +2,19 @@ package com.sofi.pacon.domain.model;
 
 import java.util.Date;
 
-/**
- * Created by sofi on 04/01/18.
- */
+public class TakingDrug {
 
-public class Drug {
-    private Date date;
+    private Date time;
     private String label;
-    private int dosage;
+    private String drugDose;
     private String measure;
 
-    public Date getDate() {
-        return date;
+    public Date getTime() {
+        return time;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public String getLabel() {
@@ -28,12 +25,12 @@ public class Drug {
         this.label = label;
     }
 
-    public int getDosage() {
-        return dosage;
+    public String getDrugDose() {
+        return drugDose;
     }
 
-    public void setDosage(int dosage) {
-        this.dosage = dosage;
+    public void setDrugDose(String drugDose) {
+        this.drugDose = drugDose;
     }
 
     public String getMeasure() {
