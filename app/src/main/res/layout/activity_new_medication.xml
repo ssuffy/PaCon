@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sofi.pacon.NewTakingDrugActivity">
+    tools:context=".NewTakingMedicationActivity">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dip"
                 android:gravity="center"
-                android:text="@string/lbl_title_drug"
+                android:text="@string/lbl_title_medication"
                 android:textAppearance="@style/CodeFontTitle" />
 
             <TextView
@@ -35,15 +35,17 @@
                 android:textAppearance="@style/CodeFontTitle" />
 
             <RelativeLayout
-                android:id="@+id/checkBoxesDrugs"
+                android:id="@+id/checkBoxesMedications"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lblTitle_moment" />
+                android:layout_below="@+id/lblTitle_moment" >
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkBoxesDrugs"
+                android:layout_below="@+id/checkBoxesMedications"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="20dip">
 
@@ -52,20 +54,16 @@
                     android:layout_width="120dip"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dip"
-                    android:layout_toRightOf="@+id/btn_saveNewTakingDrug"
-                    android:background="@color/colorAccent"
+                    android:layout_toRightOf="@+id/btn_saveNewTakingMedication"
                     android:onClick="cancel"
-                    android:text="@string/btn_cancel"
-                    android:textColor="@android:color/black" />
+                    android:text="@string/btn_cancel"/>
 
                 <Button
-                    android:id="@+id/btn_saveNewTakingDrug"
+                    android:id="@+id/btn_saveNewTakingMedication"
                     android:layout_width="120dip"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
                     android:onClick="save"
-                    android:text="@string/btn_send"
-                    android:textColor="@android:color/black" />
+                    android:text="@string/btn_send" />
 
             </RelativeLayout>
 

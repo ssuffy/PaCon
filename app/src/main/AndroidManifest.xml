@@ -13,11 +13,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/paconTheme">
         <activity
             android:name=".MainActivity"
-            android:label="PaCon"
-            android:theme="@style/paconTheme">
+            android:label="PaCon">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,32 +25,27 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".SignupActivity"
-            android:label="@string/title_activity_signup"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_signup" />
         <activity
             android:name=".ResetPasswordActivity"
-            android:label="@string/title_activity_reset_password"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_reset_password" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_settings"></activity>
         <activity
             android:name=".NewEventActivity"
-            android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_settings"></activity>
         <activity
             android:name=".NewDayActivity"
-            android:label="@string/title_activity_settings"
-            android:theme="@style/paconTheme"></activity>
+            android:label="@string/title_activity_new_day"
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
-            android:name=".NewTakingDrugActivity"
-            android:label="@string/title_activity_taking_drug"
-            android:theme="@style/paconTheme"></activity>
+            android:name=".NewTakingMedicationActivity"
+            android:label="@string/title_activity_taking_medication"
+            android:windowSoftInputMode="stateHidden"></activity>
 
         <receiver android:name=".listener.AlarmReceiver">
             <intent-filter>

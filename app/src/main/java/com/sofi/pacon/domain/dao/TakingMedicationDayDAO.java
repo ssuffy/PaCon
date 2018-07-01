@@ -6,24 +6,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sofi.pacon.domain.listener.OnGetDataListener;
-import com.sofi.pacon.domain.model.Day;
-import com.sofi.pacon.domain.model.TakingDrug;
+import com.sofi.pacon.domain.model.TakingMedication;
+import com.sofi.pacon.domain.model.TakingMedicationDay;
 
-public class TakingDrugDAO {
+public class TakingMedicationDayDAO {
 
     private DatabaseReference fireDatabase;
 
-    public TakingDrugDAO() {
+    public TakingMedicationDayDAO() {
 
-        fireDatabase = FirebaseDatabase.getInstance().getReference("testTakingDrugs");
+        fireDatabase = FirebaseDatabase.getInstance().getReference("testTakingMedications");
     }
 
-    public void writeNewDrug(String takingDrugId, TakingDrug newTakingDrug) {
-        fireDatabase.child(takingDrugId).setValue(newTakingDrug);
+    public void save(String takingMedicationId, TakingMedicationDay newTakingMedicationDay) {
+        fireDatabase.child(takingMedicationId).setValue(newTakingMedicationDay);
     }
 
-    public void getDrug(String takingDrugId, final OnGetDataListener listener) {
-        fireDatabase.child(takingDrugId).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void getMedication(String takingMedicationId, final OnGetDataListener listener) {
+        fireDatabase.child(takingMedicationId).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

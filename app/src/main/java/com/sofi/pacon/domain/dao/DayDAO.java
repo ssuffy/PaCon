@@ -1,7 +1,5 @@
 package com.sofi.pacon.domain.dao;
 
-import android.util.Log;
-
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -9,8 +7,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.sofi.pacon.domain.listener.OnGetDataListener;
 import com.sofi.pacon.domain.model.Day;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by sofi on 25/01/18.

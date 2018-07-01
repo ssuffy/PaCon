@@ -48,11 +48,12 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="btn_new_day">Nouvelle journée</string>
     <string name="btn_new_event">Nouvel événement</string>
-    <string name="btn_new_drug">Nouveau médicament</string>
+    <string name="btn_new_medication">Nouveau médicament</string>
     <string name="btn_settings">Paramètres</string>
 
 
     <!-- new_activity -->
+    <string name="title_activity_new_day">NewDayActivity</string>
     <string name="lbl_title_day">Comment va la douleur</string>
     <string name="lbl_today">"<u>aujourd'hui</u> ?"</string>
 
@@ -66,9 +67,9 @@
     <string name="intermittent">Intermittent</string>
     <string name="perce">Percée</string>
 
-    <!-- new taking drug -->
-    <string name="title_activity_taking_drug">TakingDrugActivity</string>
-    <string name="lbl_title_drug">Quand?</string>
+    <!-- new taking medication -->
+    <string name="title_activity_taking_medication">NewTakingMedicationActivity</string>
+    <string name="lbl_title_medication">Quand?</string>
     <string name="lbl_now"><u>maintenant</u></string>
 
 </resources>

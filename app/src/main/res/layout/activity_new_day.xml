@@ -344,17 +344,13 @@
                     android:layout_toRightOf="@+id/btn_saveNewDay"
                     android:layout_marginLeft="40dip"
                     android:text="@string/btn_cancel"
-                    android:onClick="cancel"
-                    android:background="@color/colorAccent"
-                    android:textColor="@android:color/black" />
+                    android:onClick="cancel" />
 
                 <Button
                     android:id="@+id/btn_saveNewDay"
                     android:layout_width="120dip"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
-                    android:text="@string/btn_send"
-                    android:textColor="@android:color/black" />
+                    android:text="@string/btn_send" />
 
             </RelativeLayout>
         </RelativeLayout>
