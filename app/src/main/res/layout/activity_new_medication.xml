@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewTakingMedicationActivity">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lblTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:gravity="center"
+                android:text="@string/lbl_title_medication"
+                android:textAppearance="@style/CodeFontTitle" />
+
+            <TextView
+                android:id="@+id/lblTitle_moment"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lblTitle"
+                android:clickable="true"
+                android:focusable="false"
+                android:gravity="center"
+                android:onClick="openDateTimePicker"
+                android:text="@string/lbl_now"
+                android:textAppearance="@style/CodeFontTitle" />
+
+            <RelativeLayout
+                android:id="@+id/checkBoxesMedications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lblTitle_moment" >
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkBoxesMedications"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dip">
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="120dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dip"
+                    android:layout_toRightOf="@+id/btn_saveNewTakingMedication"
+                    android:onClick="cancel"
+                    android:text="@string/btn_cancel"/>
+
+                <Button
+                    android:id="@+id/btn_saveNewTakingMedication"
+                    android:layout_width="120dip"
+                    android:layout_height="wrap_content"
+                    android:onClick="save"
+                    android:text="@string/btn_send" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

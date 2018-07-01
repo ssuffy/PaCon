@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="@style/Theme.AppCompat">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -10,14 +10,6 @@
         <item name="android:textColorPrimaryInverse">@color/colorText</item>
         <item name="android:colorBackground">@color/colorPrimaryDark</item>
     </style>
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="CodeFontTitle" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">@color/colorAccent</item>
@@ -35,7 +27,25 @@
     <style name="MyRadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
         <item name="android:textColor">@color/colorText</item>
         <item name="android:color">@color/colorText</item>
-        <item name="android:textSize">5dp</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name="MyCheckbox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:color">@color/colorText</item>
+        <item name="android:colorControlNormal">@color/colorText</item>
+        <item name="android:colorControlActivated">@color/colorAccent</item>
+        <item name="android:colorControlHighlight">#c51162</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name="MyButton" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:paddingBottom">15dip</item>
+        <item name="android:paddingTop">15dip</item>
     </style>
 
     <style name="CodeFontBody" parent="@android:style/TextAppearance.Medium">
@@ -44,7 +54,12 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="paconTheme" parent="Theme.AppCompat.NoActionBar" >
+    <style name="paconTheme" parent="@style/AppTheme" >
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:checkboxStyle">@style/MyCheckbox</item>
+        <item name="android:radioButtonStyle">@style/MyRadioButton</item>
+        <item name="android:buttonStyle">@style/MyButton</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

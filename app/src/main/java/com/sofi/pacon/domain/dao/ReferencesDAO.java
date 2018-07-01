@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.sofi.pacon.domain.listener.OnGetDataListener;
 
 import static android.content.ContentValues.TAG;
 
@@ -100,4 +101,20 @@ public class ReferencesDAO {
         });
         return checkBoxesLayout;
     }
+
+    public void getMedications(final OnGetDataListener listener) {
+        fireDatabase.child("Medication").addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listener.onSuccess(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                listener.onFailed(databaseError);
+            }
+        });
+    }
+
 }

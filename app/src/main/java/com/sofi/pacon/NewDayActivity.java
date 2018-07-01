@@ -3,7 +3,6 @@ package com.sofi.pacon;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,7 +33,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-public class NewDayActivity extends AppCompatActivity {
+public class NewDayActivity extends NewDataActivity {
 
     private static final String TAG = "NewDayActivity";
 
@@ -58,8 +57,6 @@ public class NewDayActivity extends AppCompatActivity {
     private Set<String> activities = new HashSet<>(), locations = new HashSet<>(), environments = new HashSet<>(),
             feelings = new HashSet<>(), contributeFactors = new HashSet<>(),
             relieveFactors = new HashSet<>();
-
-    Calendar editDate = Calendar.getInstance();
 
     final DayDAO dayDAO = new DayDAO();
 
@@ -157,20 +154,6 @@ public class NewDayActivity extends AppCompatActivity {
 
     }
 
-    private View.OnClickListener createOnCheckBoxClickListener(final Set<String> values) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CheckBox ckb = (CheckBox) v;
-                if (ckb.isChecked()) {
-                    values.add(ckb.getText().toString());
-                } else {
-                    values.remove(ckb.getText().toString());
-                }
-            }
-        };
-    }
-
     private void changeLblEVA(int progress) {
         lblscoreEVA.setText(String.valueOf(progress));
 
@@ -247,6 +230,31 @@ public class NewDayActivity extends AppCompatActivity {
                 editDate.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+    private void checkCheckBoxes(RelativeLayout checkBoxesView, Set<String> values, List<String> listValues) {
+
+        if (listValues != null && listValues.size() > 0) {
+
+            Map<String, Integer> keyOfMaps = new HashMap<>();
+
+            for (int i = 0; i < checkBoxesView.getChildCount(); i++) {
+                View child = checkBoxesView.getChildAt(i);
+                if (child instanceof CheckBox) {
+                    keyOfMaps.put(((CheckBox) child).getText().toString(), child.getId());
+                }
+            }
+
+            for (String value : listValues) {
+                if (keyOfMaps.containsKey(value)) {
+                    ((CheckBox) findViewById(keyOfMaps.get(value))).setChecked(true);
+                    values.add(value);
+                } else {
+                    System.out.println(value + " doesn't exist!");
+                }
+            }
+        }
+
+    }
+
     private void updateDate() {
 
         resetActivity();
@@ -297,31 +305,6 @@ public class NewDayActivity extends AppCompatActivity {
         });
 
         lblTitle_day.setText("le : " + sdf.format(editDate.getTime()) + "?");
-
-    }
-
-    private void checkCheckBoxes(RelativeLayout checkBoxesView, Set<String> values, List<String> listValues) {
-
-        if (listValues != null && listValues.size() > 0) {
-
-            Map<String, Integer> keyOfMaps = new HashMap<>();
-
-            for (int i = 0; i < checkBoxesView.getChildCount(); i++) {
-                View child = checkBoxesView.getChildAt(i);
-                if (child instanceof CheckBox) {
-                    keyOfMaps.put(((CheckBox) child).getText().toString(), child.getId());
-                }
-            }
-
-            for (String value : listValues) {
-                if (keyOfMaps.containsKey(value)) {
-                    ((CheckBox) findViewById(keyOfMaps.get(value))).setChecked(true);
-                    values.add(value);
-                } else {
-                    System.out.println(value + " doesn't exist!");
-                }
-            }
-        }
 
     }
 

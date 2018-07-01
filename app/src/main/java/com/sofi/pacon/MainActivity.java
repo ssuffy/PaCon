@@ -4,9 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.media.RingtoneManager;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -20,7 +18,7 @@ import com.sofi.pacon.listener.AlarmReceiver;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnNewDay, btnNewEvent, btnNewDrug, btnSettings, signOut;
+    private Button btnNewDay, btnNewEvent, btnNewMedication, btnSettings, signOut;
 
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
@@ -51,17 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
         btnNewDay = findViewById(R.id.new_day_button);
         btnNewEvent = findViewById(R.id.new_event_button);
-        btnNewDrug = findViewById(R.id.new_drug_button);
+        btnNewMedication = findViewById(R.id.new_medication_button);
         btnSettings = findViewById(R.id.settings_button);
         signOut = findViewById(R.id.sign_out);
-
-
-        btnNewDay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNewDayActivity();
-            }
-        });
 
         btnNewEvent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,8 +102,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void openNewDayActivity() {
+    public void openNewDayActivity(View view) {
         Intent intent = new Intent(MainActivity.this, NewDayActivity.class);
+        startActivity(intent);
+    }
+
+    public void openNewTakingMedicationActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, NewTakingMedicationActivity.class);
         startActivity(intent);
     }
 
