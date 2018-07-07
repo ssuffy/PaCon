@@ -8,6 +8,8 @@ public class TakingMedicationDay {
     private Date time;
     private List<TakingMedication> takingMedications;
 
+    public TakingMedicationDay() {}
+
     public TakingMedicationDay(Date time, List<TakingMedication> takingMedications) {
         this.time = time;
         this.takingMedications = takingMedications;
