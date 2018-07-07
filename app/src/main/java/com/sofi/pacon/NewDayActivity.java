@@ -114,6 +114,8 @@ public class NewDayActivity extends NewDataActivity {
 
         save = findViewById(R.id.btn_saveNewDay);
 
+        updateDate();
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
