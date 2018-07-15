@@ -3,17 +3,12 @@ package com.sofi.pacon;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -37,10 +32,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class NewTakingMedicationActivity extends NewDataActivity {
@@ -243,7 +236,7 @@ public class NewTakingMedicationActivity extends NewDataActivity {
         tableLayout.refreshDrawableState();
     }
 
-    public void save() {
+    public void save(View v) {
 
         List<TakingMedication> takingMedications = tookMedications.values().stream().flatMap(set -> set.stream()).collect(Collectors.toList());
 
@@ -263,7 +256,9 @@ public class NewTakingMedicationActivity extends NewDataActivity {
             CheckBox ckb = (CheckBox) v;
             if (ckb.isChecked()) {
                 layout.setVisibility(View.VISIBLE);
-                tookMedications.put(medicationName, new ArrayList<>());
+                if(!tookMedications.containsKey(medicationName)) {
+                    tookMedications.put(medicationName, new ArrayList<>());
+                }
             } else {
                 layout.setVisibility(View.GONE);
                 tookMedications.remove(medicationName);
@@ -321,7 +316,7 @@ public class NewTakingMedicationActivity extends NewDataActivity {
                         existTakingMedications.remove(existTakingMedication);
                         tookMedications.put(existTakingMedication.getName(), existTakingMedications);
                         tableLayout.removeViewInLayout(tableRow);
-                        save();
+                        save(v);
                     });
                     tableRow.addView(deleteLink);
 
@@ -340,26 +335,12 @@ public class NewTakingMedicationActivity extends NewDataActivity {
     private void updateTookMedication(String medicationName, String measure, String dosage, int value) {
         List<TakingMedication> takingMedications = tookMedications.get(medicationName);
 
-        int found = -1;
-
         if (takingMedications == null) {
             takingMedications = new ArrayList<>();
         }
-        for (TakingMedication takingMedication : takingMedications) {
-            if (dosage != null && dosage.equals(takingMedication.getMedicationDose()) && measure != null && measure.equals(takingMedication.getMeasure())) {
-                found = takingMedication.getQuantity();
-                takingMedication.setQuantity(value);
-                if (value > found) {
-                    openTimePicker(this, medicationName, takingMedications, takingMedication);
-                }
-            }
-        }
-        if (found < 0) {
-            Date time = null;
-            TakingMedication takingMedication = new TakingMedication(time, medicationName, dosage, measure, value);
-            openTimePicker(this, medicationName, takingMedications, takingMedication);
-        }
-
+        Date time = null;
+        TakingMedication takingMedication = new TakingMedication(time, medicationName, dosage, measure, value);
+        openTimePicker(this, medicationName, takingMedications, takingMedication);
     }
 
     private void updateTookMedications(String medicationName, List<TakingMedication> takingMedications, TakingMedication takingMedication) {

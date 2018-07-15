@@ -74,6 +74,7 @@ public class NewDayActivity extends NewDataActivity {
         evaBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Log.i(TAG, "FromUser = " + fromUser);
                 changeLblEVA(progress);
             }
 
@@ -116,9 +117,7 @@ public class NewDayActivity extends NewDataActivity {
 
         updateDate();
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        save.setOnClickListener((View v) -> {
                 Day newDay = new Day();
                 List<String> lstActivities = new ArrayList<>(), lstLocations = new ArrayList<>(), lstEnvironments = new ArrayList<>(),
                         lstFeelings = new ArrayList<>(), lstContributeFactors = new ArrayList<>(),
@@ -151,7 +150,6 @@ public class NewDayActivity extends NewDataActivity {
                 dayDAO.writeNewDay(formatDate.format(editDate.getTime()), newDay);
                 setResult(Activity.RESULT_OK);
                 finish();
-            }
         });
 
     }
@@ -212,18 +210,13 @@ public class NewDayActivity extends NewDataActivity {
         ((CheckBox) findViewById(R.id.checkboxEvening)).setChecked(moments.contains("Soirée"));
     }
 
-    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
+    DatePickerDialog.OnDateSetListener date = (DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) -> {
 
             editDate.set(Calendar.YEAR, year);
             editDate.set(Calendar.MONTH, monthOfYear);
             editDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             updateDate();
-        }
-
     };
 
     public void openDatePicker(View v) {
@@ -277,12 +270,22 @@ public class NewDayActivity extends NewDataActivity {
 
                     Day existDay = data.getValue(Day.class);
                     lblscoreEVA.setText(String.valueOf(existDay.getScore()));
-                    evaBar.setProgress(existDay.getScore());
+                    evaBar.setProgress(existDay.getScore(), false);
 
-                    ((RadioButton) findViewById(R.id.radioFaible)).setChecked(getString(R.string.faible).equals(existDay.getIntensity()));
-                    ((RadioButton) findViewById(R.id.radioMoyen)).setChecked(getString(R.string.moyen).equals(existDay.getIntensity()));
-                    ((RadioButton) findViewById(R.id.radioMoyenFort)).setChecked(getString(R.string.mFort).equals(existDay.getIntensity()));
-                    ((RadioButton) findViewById(R.id.radioFort)).setChecked(getString(R.string.fort).equals(existDay.getIntensity()));
+                    if(existDay.getIntensity() != null) {
+                        if(getString(R.string.faible).equals(existDay.getIntensity())) {
+                            rg_painIntensity.check(R.id.radioFaible);
+                        }
+                        if(getString(R.string.moyen).equals(existDay.getIntensity())) {
+                            rg_painIntensity.check(R.id.radioMoyen);
+                        }
+                        if(getString(R.string.mFort).equals(existDay.getIntensity())) {
+                            rg_painIntensity.check(R.id.radioMoyenFort);
+                        }
+                        if(getString(R.string.fort).equals(existDay.getIntensity())) {
+                            rg_painIntensity.check(R.id.radioFort);
+                        }
+                    }
 
                     checkCheckBoxes(checkBoxesLocation, locations, existDay.getPainLocation());
                     checkCheckBoxes(checkboxesActivity, activities, existDay.getActivity());
@@ -314,10 +317,7 @@ public class NewDayActivity extends NewDataActivity {
         lblscoreEVA.setText("0");
         evaBar.setProgress(0);
 
-        ((RadioButton) findViewById(R.id.radioFaible)).setChecked(false);
-        ((RadioButton) findViewById(R.id.radioMoyen)).setChecked(false);
-        ((RadioButton) findViewById(R.id.radioMoyenFort)).setChecked(false);
-        ((RadioButton) findViewById(R.id.radioFort)).setChecked(false);
+        rg_painIntensity.clearCheck();
 
         resetCheckBoxes(checkBoxesLocation);
         resetCheckBoxes(checkboxesActivity);
