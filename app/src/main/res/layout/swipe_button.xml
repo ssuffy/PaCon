@@ -2,8 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_bg"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:background="@drawable/button_border">
+    android:layout_height="100dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp">
+
+    <LinearLayout
+        android:id="@+id/layout_textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/button_border" >
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="label"
+            android:layout_toRightOf="@id/thumbnail"
+            android:paddingLeft="60dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18dp" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/thumbnail"
@@ -13,33 +34,12 @@
         android:scaleType="centerInside"
         android:src="@drawable/white_circle" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:paddingLeft="10dp">
-
-        <TextView
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/thumbnail"
-            android:text="label"
-            android:textColor="@color/colorText"
-            android:textSize="21dp" />
-
-    </LinearLayout>
-
     <ImageView
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:padding="25dp"
         android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/linearLayout3"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         android:src="@drawable/coeur" />

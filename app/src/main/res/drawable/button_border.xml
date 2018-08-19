@@ -4,10 +4,13 @@
     android:layout_height="match_parent"
     android:shape="rectangle">
 
-    <stroke android:width="2dp"
-        android:color="@color/colorAccent" />
 
-    <solid android:color="@color/colorAccent" />
+    <gradient
+        android:angle="90"
+        android:centerColor="@color/colorAccent"
+        android:endColor="#b5b6d2"
+        android:startColor="@color/colorAccent"
+        android:type="linear" />
 
     <corners android:radius="25dp" />
 </shape>

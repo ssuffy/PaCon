@@ -19,27 +19,27 @@
         <com.sofi.pacon.layout.SwipeButton
             android:id="@+id/new_day_button"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
             android:layout_margin="10dp"
+            android:layout_height="wrap_content"
             android:onClick="openNewDayActivity"
             app:icon="@drawable/datapink"
-            app:label="Saisir une journée"
+            app:label="Nouvelle journée"
             />
 
         <com.sofi.pacon.layout.SwipeButton
             android:id="@+id/new_medication_button"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
             android:layout_margin="10dp"
+            android:layout_height="wrap_content"
             android:onClick="openNewTakingMedicationActivity"
             app:icon="@drawable/medocspink"
-            app:label="Ajouter une prise"
+            app:label="Nouvelle prise"
             />
 
         <com.sofi.pacon.layout.SwipeButton
             android:id="@+id/new_event_button"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             app:icon="@drawable/coeurpink"
             app:label="Visualiser"
