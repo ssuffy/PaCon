@@ -39,7 +39,6 @@ public class SwipeButton extends RelativeLayout {
     private void init(Context context, AttributeSet attrs) {
 
         init();
-        // Getting the attributes.
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs,
                 R.styleable.SwipeButton, 0, 0);
         try {
@@ -48,18 +47,15 @@ public class SwipeButton extends RelativeLayout {
         } finally {
             a.recycle();
         }
-        // Setting the attributes to view.
         this.textView1.setText(label);
         this.icon.setImageDrawable(drawableIcon);
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        // TODO Auto-generated method stub
         super.onWindowFocusChanged(hasFocus);
-        // Getting the height of layout.
+
         int h = layout.getHeight();
-        // I can't set icon height here so I set the padding.
         int p = h / 4;
         this.icon.setPadding(p, p, p, p);
     }

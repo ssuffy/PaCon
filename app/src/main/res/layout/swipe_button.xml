@@ -19,11 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="label"
-            android:layout_toRightOf="@id/thumbnail"
-            android:paddingLeft="60dp"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:paddingLeft="70dp"
             android:paddingTop="15dp"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="18dp" />
+            android:textSize="16dp" />
     </LinearLayout>
 
     <ImageView
@@ -38,10 +38,10 @@
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:padding="25dp"
+        android:foregroundGravity="center"
         android:layout_alignParentLeft="true"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
-        android:src="@drawable/coeur" />
+        android:src="@drawable/coeurpink" />
 
 </RelativeLayout>
