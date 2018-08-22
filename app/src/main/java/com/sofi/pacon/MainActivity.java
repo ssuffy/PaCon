@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -13,12 +14,15 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.sofi.pacon.layout.SwipeButton;
 import com.sofi.pacon.listener.AlarmReceiver;
 
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnNewDay, btnNewEvent, btnNewMedication, btnSettings, signOut;
+    private Button btnSettings, signOut;
+
+    private SwipeButton btnNewDay, btnNewEvent, btnNewMedication;
 
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;

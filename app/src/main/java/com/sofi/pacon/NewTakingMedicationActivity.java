@@ -26,6 +26,7 @@ import com.sofi.pacon.domain.listener.OnGetDataListener;
 import com.sofi.pacon.domain.model.Medication;
 import com.sofi.pacon.domain.model.TakingMedication;
 import com.sofi.pacon.domain.model.TakingMedicationDay;
+import com.sofi.pacon.layout.MedicationLine;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -280,45 +281,28 @@ public class NewTakingMedicationActivity extends NewDataActivity {
 
             List<TakingMedication> existTakingMedications = existTakingMedicationDay.getTakingMedications();
 
-            tableLayout.setPadding(20, 0, 0, 20);
-
-            TableRow titleRow = new TableRow(this);
-            titleRow.setBackgroundColor(getResources().getColor(R.color.colorAccent, getTheme()));
-            titleRow.setPadding(0, 6, 0, 6);
-            titleRow.addView(createTitleCell("Médicament"));
-            titleRow.addView(createTitleCell("Dosage"));
-            titleRow.addView(createTitleCell("Quantité"));
-            titleRow.addView(createTitleCell("Heure"));
-            titleRow.addView(createTitleCell(""));
-            tableLayout.addView(titleRow);
+            tableLayout.setPadding(0, 0, 0, 20);
 
             for (TakingMedication existTakingMedication : existTakingMedications) {
 
                 if (existTakingMedication.getQuantity() > 0) {
 
                     TableRow tableRow = new TableRow(this);
-                    int idRow = View.generateViewId();
-                    tableRow.setId(idRow);
-                    tableRow.setBackgroundColor(getResources().getColor(R.color.colorAccent, getTheme()));
-                    tableRow.setPadding(0, 6, 6, 6);
+                    tableRow.setPadding(0, 0, 0, 0);
 
-                    tableRow.addView(createCell(existTakingMedication.getName()));
-                    tableRow.addView(createCell(existTakingMedication.getMedicationDose() + " " + existTakingMedication.getMeasure()));
-                    tableRow.addView(createCell(String.valueOf(existTakingMedication.getQuantity())));
-                    tableRow.addView(createCell(existTakingMedication.getTime()));
+                    String label = existTakingMedication.getName();
+                    String dosage = existTakingMedication.getMedicationDose() + " " + existTakingMedication.getMeasure();
+                    String time = existTakingMedication.getTime();
+                    int quantity = existTakingMedication.getQuantity();
 
-                    ImageView deleteLink = new ImageView(this);
-                    deleteLink.setImageResource(R.drawable.icon_trash);
-                    deleteLink.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark, getTheme()));
-                    deleteLink.setClickable(true);
-                    deleteLink.setMinimumHeight(110);
-                    deleteLink.setOnClickListener((View v) -> {
+                    MedicationLine medicationLine = new MedicationLine(this, label, dosage, time, quantity, (View v) -> {
                         existTakingMedications.remove(existTakingMedication);
                         tookMedications.put(existTakingMedication.getName(), existTakingMedications);
                         tableLayout.removeViewInLayout(tableRow);
                         save(v);
                     });
-                    tableRow.addView(deleteLink);
+
+                    tableRow.addView(medicationLine);
 
                     List<TakingMedication> takingMedications = tookMedications.get(existTakingMedication.getName());
                     if (takingMedications == null) {

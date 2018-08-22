@@ -8,50 +8,73 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <Button
+        <com.sofi.pacon.layout.SwipeButton
             android:id="@+id/new_day_button"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="@string/btn_new_day"
-            android:onClick="openNewDayActivity" />
+            android:onClick="openNewDayActivity"
+            app:icon="@drawable/datapink"
+            app:label="Nouvelle journée"
+            />
 
-        <Button
-            android:id="@+id/new_event_button"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="@string/btn_new_event" />
-
-        <Button
+        <com.sofi.pacon.layout.SwipeButton
             android:id="@+id/new_medication_button"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:onClick="openNewTakingMedicationActivity"
+            app:icon="@drawable/medocspink"
+            app:label="Nouvelle prise"
+            />
+
+        <com.sofi.pacon.layout.SwipeButton
+            android:id="@+id/new_event_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:icon="@drawable/coeurpink"
+            app:label="Visualiser"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="@string/btn_new_medication"
-            android:onClick="openNewTakingMedicationActivity" />
+            android:weightSum="2"
+            android:layout_gravity="bottom" >
 
-        <Button
-            android:id="@+id/settings_button"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="@string/btn_settings" />
+            <Button
+                android:id="@+id/settings_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:text="@string/btn_settings" />
 
-        <Button
-            android:id="@+id/sign_out"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:text="@string/btn_sign_out" />
+            <Button
+                android:id="@+id/sign_out"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_weight="1"
+                android:text="@string/btn_sign_out" />
 
+        </TableRow>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
