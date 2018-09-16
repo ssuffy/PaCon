@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -166,14 +165,12 @@ public class NewTakingMedicationActivity extends NewDataActivity {
     };
 
     public void openDatePicker(View v) {
-        notManualUpd = true;
         new DatePickerDialog(v.getContext(), date, editDate
                 .get(Calendar.YEAR), editDate.get(Calendar.MONTH),
                 editDate.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     public void openTimePicker(Activity activity, String medicationName, List<TakingMedication> takingMedications, TakingMedication takingMedication) {
-        notManualUpd = true;
         Calendar editTime = Calendar.getInstance();
         editTime.set(editDate.YEAR, editDate.MONTH, editDate.DATE);
 
@@ -296,8 +293,13 @@ public class NewTakingMedicationActivity extends NewDataActivity {
                     int quantity = existTakingMedication.getQuantity();
 
                     MedicationLine medicationLine = new MedicationLine(this, label, dosage, time, quantity, (View v) -> {
-                        existTakingMedications.remove(existTakingMedication);
-                        tookMedications.put(existTakingMedication.getName(), existTakingMedications);
+                        existTakingMedication.setQuantity(quantity - 1);
+                        List<TakingMedication> tookMedicationsList = tookMedications.get(existTakingMedication.getName());
+                        tookMedicationsList.stream()
+                                .filter(medication -> medication.getTime().equals(time))
+                                .findFirst()
+                                .map(m -> tookMedicationsList.remove(m));
+                        tookMedications.put(existTakingMedication.getName(), tookMedicationsList);
                         tableLayout.removeViewInLayout(tableRow);
                         save(v);
                     });
