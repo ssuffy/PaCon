@@ -242,7 +242,6 @@ public class NewTakingMedicationActivity extends NewDataActivity {
         takingMedicationDAO.save(formatDate.format(editDate.getTime()), takingMedicationDay);
 
         setResult(Activity.RESULT_OK);
-        finish();
     }
 
     public void cancel(View v) {

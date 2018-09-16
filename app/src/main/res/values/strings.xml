@@ -39,6 +39,7 @@
     <string name="hint_new_email">New Email</string>
     <string name="btn_change">Change</string>
     <string name="btn_send">Sauvegarder</string>
+    <string name="btn_return">Retour</string>
     <string name="btn_cancel">Annuler</string>
     <string name="btn_remove">Supprimer</string>
     <string name="btn_add">Ajouter</string>
