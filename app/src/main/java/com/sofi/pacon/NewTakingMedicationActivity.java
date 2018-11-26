@@ -178,13 +178,14 @@ public class NewTakingMedicationActivity extends NewDataActivity {
             editTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
             editTime.set(Calendar.MINUTE, minute);
             takingMedication.setTimeWithDate(editTime.getTime());
-            updateTookMedications(medicationName, takingMedications, takingMedication);
+            updateTookMedicationsAndTableLayout(medicationName, takingMedications, takingMedication);
         };
         new TimePickerDialog(activity, time, editTime.get(Calendar.HOUR_OF_DAY), editTime.get(Calendar.MINUTE), true).show();
     }
 
     private void updateDate() {
         String myFormat = "dd/MM/yyyy";
+        tableLayout.removeAllViews();
         resetActivity();
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
 
@@ -201,7 +202,7 @@ public class NewTakingMedicationActivity extends NewDataActivity {
 
                 if (data != null && data.exists()) {
                     TakingMedicationDay existDay = data.getValue(TakingMedicationDay.class);
-                    completeTableLayout(existDay);
+                    initializeTableLayout(existDay);
                 }
                 notManualUpd = false;
             }
@@ -230,7 +231,6 @@ public class NewTakingMedicationActivity extends NewDataActivity {
             }
         }
         tableLayout.invalidate();
-        tableLayout.removeAllViews();
         tableLayout.refreshDrawableState();
     }
 
@@ -241,8 +241,9 @@ public class NewTakingMedicationActivity extends NewDataActivity {
         TakingMedicationDay takingMedicationDay = new TakingMedicationDay(editDate.getTime(), takingMedications);
         takingMedicationDAO.save(formatDate.format(editDate.getTime()), takingMedicationDay);
 
-        setResult(Activity.RESULT_OK);
+        resetActivity();
     }
+
 
     public void cancel(View v) {
         finish();
@@ -271,7 +272,7 @@ public class NewTakingMedicationActivity extends NewDataActivity {
         };
     }
 
-    protected void completeTableLayout(TakingMedicationDay existTakingMedicationDay) {
+    protected void initializeTableLayout(TakingMedicationDay existTakingMedicationDay) {
 
         if (existTakingMedicationDay != null && existTakingMedicationDay.getTakingMedications() != null && existTakingMedicationDay.getTakingMedications().size() > 0) {
 
@@ -280,41 +281,41 @@ public class NewTakingMedicationActivity extends NewDataActivity {
             tableLayout.setPadding(0, 0, 0, 20);
 
             for (TakingMedication existTakingMedication : existTakingMedications) {
-
                 if (existTakingMedication.getQuantity() > 0) {
-
-                    TableRow tableRow = new TableRow(this);
-                    tableRow.setPadding(0, 0, 0, 0);
-
-                    String label = existTakingMedication.getName();
-                    String dosage = existTakingMedication.getMedicationDose() + " " + existTakingMedication.getMeasure();
-                    String time = existTakingMedication.getTime();
-                    int quantity = existTakingMedication.getQuantity();
-
-                    MedicationLine medicationLine = new MedicationLine(this, label, dosage, time, quantity, (View v) -> {
-                        existTakingMedication.setQuantity(quantity - 1);
-                        List<TakingMedication> tookMedicationsList = tookMedications.get(existTakingMedication.getName());
-                        tookMedicationsList.stream()
-                                .filter(medication -> medication.getTime().equals(time))
-                                .findFirst()
-                                .map(m -> tookMedicationsList.remove(m));
-                        tookMedications.put(existTakingMedication.getName(), tookMedicationsList);
-                        tableLayout.removeViewInLayout(tableRow);
-                        save(v);
-                    });
-
-                    tableRow.addView(medicationLine);
-
                     List<TakingMedication> takingMedications = tookMedications.get(existTakingMedication.getName());
                     if (takingMedications == null) {
                         takingMedications = new ArrayList<>();
                     }
-                    updateTookMedications(existTakingMedication.getName(), takingMedications, existTakingMedication);
-
-                    tableLayout.addView(tableRow);
+                    updateTookMedicationsAndTableLayout(existTakingMedication.getName(), takingMedications, existTakingMedication);
                 }
             }
         }
+    }
+
+    protected TableRow createTableRow(TakingMedication takingMedication) {
+        TableRow tableRow = new TableRow(this);
+        tableRow.setPadding(0, 0, 0, 0);
+
+        String label = takingMedication.getName();
+        String dosage = takingMedication.getMedicationDose() + " " + takingMedication.getMeasure();
+        String time = takingMedication.getTime();
+        int quantity = takingMedication.getQuantity();
+
+        MedicationLine medicationLine = new MedicationLine(this, label, dosage, time, quantity, (View v) -> {
+            takingMedication.setQuantity(quantity - 1);
+            List<TakingMedication> tookMedicationsList = tookMedications.get(takingMedication.getName());
+            tookMedicationsList.stream()
+                    .filter(medication -> medication.getTime().equals(time))
+                    .findFirst()
+                    .map(m -> tookMedicationsList.remove(m));
+            tookMedications.put(takingMedication.getName(), tookMedicationsList);
+            tableLayout.removeViewInLayout(tableRow);
+            save(v);
+        });
+
+        tableRow.addView(medicationLine);
+
+        return tableRow;
     }
 
     private void updateTookMedication(String medicationName, String measure, String dosage, int value) {
@@ -328,8 +329,12 @@ public class NewTakingMedicationActivity extends NewDataActivity {
         openTimePicker(this, medicationName, takingMedications, takingMedication);
     }
 
-    private void updateTookMedications(String medicationName, List<TakingMedication> takingMedications, TakingMedication takingMedication) {
+    private void updateTookMedicationsAndTableLayout(String medicationName, List<TakingMedication> takingMedications, TakingMedication takingMedication) {
         takingMedications.add(takingMedication);
+
+        TableRow tableRow = createTableRow(takingMedication);
+        tableLayout.addView(tableRow);
+
         tookMedications.put(medicationName, takingMedications);
     }
 
